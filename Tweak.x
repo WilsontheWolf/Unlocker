@@ -24,7 +24,6 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 
 %hook SBLockScreenManager 
     - (void)_clearAuthenticationLockAssertion {
-		NSLog(@"[Unlocker] %hhd", enabled);
         if (enabled)
             return;
         else 

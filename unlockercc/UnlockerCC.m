@@ -59,9 +59,11 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
   SBLockScreenManager *manager = [NSClassFromString(@"SBLockScreenManager") sharedInstance];
   // SBSLockScreenService *service = [[NSClassFromString(@"SBSLockScreenService") alloc] init];
 
+  // IDK how to get this to work
   // [service requestPasscodeUnlockUIWithOptions:nil withCompletion:self.test]; 
 
   if([manager isUILocked]) {
+    // Ask the user to unlock the device. Doesn't work ¯\_(ツ)_/¯
     // UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
     //                               message:@"Please unlock your device first."
     //                               preferredStyle:UIAlertControllerStyleAlert];
@@ -70,8 +72,8 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
     //   handler:^(UIAlertAction * action) {}];
     
     // [alert addAction:defaultAction];
-    // NSLog(@"[unlocker] %@", [self contentViewController]);
-    // [[self contentViewController] presentViewController:alert animated:YES completion:nil];
+    
+    // Force the device to unlock. Very unpleasnt.
     [manager lockScreenViewControllerRequestsUnlock];
   } else {
     [self toggle];
