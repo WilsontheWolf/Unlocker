@@ -15,7 +15,7 @@
 		<key>default</key>
 		<true/>
 		<key>icon</key>
-		<string>/Library/ControlCenter/Bundles/UnlockerCC.bundle/SettingsIcon@2x.png</string>
+		<string>SettingsIcon@2x.png</string>
 		<key>PostNotification</key>
 		<string>com.wilsonthewolf.unlocker/preferences.changed</string>
 	</dict>
