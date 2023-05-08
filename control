@@ -1,12 +1,12 @@
 Package: com.wilsonthewolf.unlocker
 Name: Unlocker
-Version: 0.0.2
+Version: 0.0.4
 Architecture: iphoneos-arm
 Description: Keep your device unlocked.
 Maintainer: WilsontheWolf
 Author: WilsontheWolf
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.3), com.opa334.ccsupport
-Icon: file:///Library/ControlCenter/Bundles/UnlockerCC.bundle/SettingsIcon@3x.png
-Depiction: https://wilson.antti.codes/repo/depictions/web/com.wilsonthewolf.unlocker
-SileoDepiction: https://wilson.antti.codes/repo/depictions/sileo/com.wilsonthewolf.unlocker
+Icon: https://repo.shorty.systems/icons/com.wilsonthewolf.unlocker.png
+Depiction: https://repo.shorty.systems/depictions/web/com.wilsonthewolf.unlocker
+SileoDepiction: https://repo.shorty.systems/depictions/sileo/com.wilsonthewolf.unlocker
