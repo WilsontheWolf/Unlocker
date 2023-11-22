@@ -14,6 +14,12 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 	enabled = (enabledValue)? [enabledValue boolValue] : YES;
 }
 
+@implementation UnlockerAlertController
+-(BOOL)_canShowWhileLocked {
+  return YES;
+}
+@end
+
 @implementation UnlockerCC
 
 
@@ -56,25 +62,22 @@ static void notificationCallback(CFNotificationCenterRef center, void *observer,
 }
 - (void)setSelected:(BOOL)selected
 {
-  SBLockScreenManager *manager = [NSClassFromString(@"SBLockScreenManager") sharedInstance];
-  // SBSLockScreenService *service = [[NSClassFromString(@"SBSLockScreenService") alloc] init];
 
-  // IDK how to get this to work
-  // [service requestPasscodeUnlockUIWithOptions:nil withCompletion:self.test]; 
-
-  if([manager isUILocked]) {
-    // Ask the user to unlock the device. Doesn't work ¯\_(ツ)_/¯
-    // UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-    //                               message:@"Please unlock your device first."
-    //                               preferredStyle:UIAlertControllerStyleAlert];
+  if([[NSClassFromString(@"SBLockStateAggregator") sharedInstance] lockState] > 2) { // 0 is unlocked and 1 is unlocked but on lockscreen 
+    UnlockerAlertController* alert = [UnlockerAlertController alertControllerWithTitle:@"Unlocker Error"
+                                  message:@"Please unlock your device first."
+                                  preferredStyle:UIAlertControllerStyleAlert];
  
-    // UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-    //   handler:^(UIAlertAction * action) {}];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+      handler:^(UIAlertAction * action) {}];
     
-    // [alert addAction:defaultAction];
-    
-    // Force the device to unlock. Very unpleasnt.
-    [manager lockScreenViewControllerRequestsUnlock];
+    [alert addAction:defaultAction];
+
+    // Get the view controller of springboard
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    UIViewController *rootViewController = [keyWindow rootViewController];
+
+    [rootViewController presentViewController:alert animated:YES completion:nil];    
   } else {
     [self toggle];
   }

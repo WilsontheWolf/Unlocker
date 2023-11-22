@@ -5,7 +5,7 @@ include $(THEOS)/makefiles/common.mk
 BUNDLE_NAME = UnlockerCC
 UnlockerCC_BUNDLE_EXTENSION = bundle
 UnlockerCC_FILES = UnlockerCC.m
-UnlockerCC_CFLAGS = -fobjc-arc
+UnlockerCC_CFLAGS = -fobjc-arc -Wno-deprecated-declarations
 UnlockerCC_PRIVATE_FRAMEWORKS = ControlCenterUIKit
 UnlockerCC_INSTALL_PATH = /Library/ControlCenter/Bundles/
 
